@@ -6,6 +6,8 @@ import {selectCollectionsForPreview} from '../../redux/shop/shop.selector';
 
 import CollectionPreview from '../../components/collection-preview/collection-preview.component';
 
+import WithSpinner from '../../components/with-spinner/with-spinner.component'
+
 import './collection-overview.styles.scss';
 
 const CollectionsOverview = ({collections}) => (
