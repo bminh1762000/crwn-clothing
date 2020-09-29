@@ -20,6 +20,18 @@ export const CollectionItemContainer = styled.div`
         opacity: 0.8;
       }
     }
+
+    @media (max-width : 768px) {
+      justify-content : center;
+      width : 38vw;
+      height : 350px
+    }
+
+    @media (max-width : 426px) {
+      justify-content : center;
+      width : 90vw;
+      height : 350px
+    }
 `;
 
 export const AddButton = styled(CustomButton)`

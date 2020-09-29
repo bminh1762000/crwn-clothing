@@ -1,75 +1,69 @@
-import React from 'react';
+import React, { useState } from "react";
 
-import FormInput from '../../components/form-input/form-input.component';
-import CustomButton from '../custom-button/custom-button.component';
+import FormInput from "../../components/form-input/form-input.component";
+import CustomButton from "../custom-button/custom-button.component";
 
-import './contact-item.styles.scss';
+import {ContactFormContainer, MessageContainer, ButtonSubmitContainer} from './page-item.styles';
 
-class Contact extends React.Component {
-   constructor(props) {
-      super(props);
+const Contact = () => {
+  const initialValues = {
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  };
 
-      this.state = {
-         name : '',
-         email : '',
-         subject : '',
-         message : ''
-      };
-   }
+  const [values, setValues] = useState(initialValues);
 
-   handleChange = event => {
-      const { name, value } = event.target;
-      this.setState({
-         [name] : value
-      });
-   };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setValues({ ...values, [name]: value });
+  };
 
-   handleSubmit = event => {
-      event.preventDefault();
-      this.setState({name:'',email:'',subject:'',message:''});
-   };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    this.setState(initialValues);
+  };
 
-   render() {
-      return (
-         <div className='contact-form'>
-            <h1>Contact Us</h1>
-            <p>Get in touch and let us know how we can help.</p>
-            <form onSubmit={this.handleSubmit} >
-               <FormInput 
-                  name='name'
-                  type='text'
-                  handleChange={this.handleChange}
-                  value={this.state.name}
-                  label='Name'
-                  required
-               />
-               <FormInput 
-                  name='email'
-                  type='email'
-                  handleChange={this.handleChange}
-                  value={this.state.email}
-                  label='Email'
-                  required
-               />
-               <FormInput 
-                  name='subject'
-                  type='text'
-                  handleChange={this.handleChange}
-                  value={this.state.subject}
-                  label='Subject'
-                  required
-               />
-               <div className='message'>
-                  <label for="message">Message</label>
-                  <textarea name='message' value={this.state.message} rows='5' />
-               </div>
-               <div className='button-submit'>
-                  <CustomButton type='submit'>Send Email</CustomButton>
-               </div>
-            </form>
-         </div>
-      );
-   };
-}
+  return (
+    <ContactFormContainer>
+      <h1>Contact Us</h1>
+      <p>Get in touch and let us know how we can help.</p>
+      <form onSubmit={handleSubmit}>
+        <FormInput
+          name="name"
+          type="text"
+          handleChange={handleChange}
+          value={values.name}
+          label="Name"
+          required
+        />
+        <FormInput
+          name="email"
+          type="email"
+          handleChange={handleChange}
+          value={values.email}
+          label="Email"
+          required
+        />
+        <FormInput
+          name="subject"
+          type="text"
+          handleChange={handleChange}
+          value={values.subject}
+          label="Subject"
+          required
+        />
+        <MessageContainer>
+          <label for="message">Message</label>
+          <textarea name="message" value={values.message} rows="5" />
+        </MessageContainer>
+        <ButtonSubmitContainer>
+          <CustomButton type="submit">Send Email</CustomButton>
+        </ButtonSubmitContainer>
+      </form>
+    </ContactFormContainer>
+  );
+};
 
 export default Contact;
