@@ -10,7 +10,7 @@ const Contact = () => {
     name: "",
     email: "",
     subject: "",
-    message: "",
+    message: ""
   };
 
   const [values, setValues] = useState(initialValues);
@@ -22,7 +22,7 @@ const Contact = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    this.setState(initialValues);
+    setValues(initialValues);
   };
 
   return (
@@ -55,8 +55,8 @@ const Contact = () => {
           required
         />
         <MessageContainer>
-          <label for="message">Message</label>
-          <textarea name="message" value={values.message} rows="5" />
+          <label htmlFor="message">Message</label>
+          <textarea name="message" value={values.message} onChange={handleChange} rows="5" />
         </MessageContainer>
         <ButtonSubmitContainer>
           <CustomButton type="submit">Send Email</CustomButton>

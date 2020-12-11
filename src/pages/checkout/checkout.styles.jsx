@@ -8,6 +8,10 @@ export const CheckoutPageContainer = styled.div`
    flex-direction: column;
    align-items: center;
    margin: 50px auto 0;
+
+   @media screen and (max-width: 800px){
+      width : 90%;
+   }
 `;
 
 export const CheckoutHeaderContainer = styled.div`
@@ -16,15 +20,28 @@ export const CheckoutHeaderContainer = styled.div`
    display: flex;
    justify-content: space-between;
    border-bottom: 1px solid darkgrey;
+
+   @media screen and (max-width: 800px){
+      padding : 0;
+   }
 `;
 
 export const HeaderBlockContainer = styled.div`
    text-transform: capitalize;
-   width: 23%;
+   width: 22%;
    padding: 0 10px ;
 
    &:last-child {
-      width: 6%;
+      width: 7%;
+   }
+
+   @media screen and (max-width: 800px){
+      width : 20%;
+      padding : 0;
+
+      &:last-child {
+         width: 12%;
+      }
    }
 `;
 
@@ -32,6 +49,10 @@ export const TotalSection = styled.div`
    margin-top: 30px;
    margin-left: auto;
    font-size: 36px;
+
+   @media screen and (max-width: 800px){
+      font-size : 26px;
+   }
 `;
 
 export const StripeButton = styled(StripeCheckoutButton)`
@@ -44,4 +65,8 @@ export const TextWarning = styled.div`
    margin-top: 40px;
    font-size: 24px;
    color : red;
+
+   @media screen and (max-width: 800px){
+      font-size : 20px;
+   }
 `;

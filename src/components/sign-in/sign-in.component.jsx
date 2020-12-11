@@ -79,7 +79,7 @@ const SignIn = ({googleSignInStart, emailSignInStart}) => {
     const handleSubmit = event => {
         event.preventDefault();
         const {email, password} = values;
-        emailSignInStart(email, password);
+        emailSignInStart({email, password});
     }
 
     const handleChange = event => {
@@ -121,7 +121,7 @@ const SignIn = ({googleSignInStart, emailSignInStart}) => {
 
 const mapDispatchToProps = dispatch => ({
     googleSignInStart : () => dispatch(googleSignInStart()),
-    emailSignInStart : (email, password) => dispatch(emailSignInStart({email, password})) 
+    emailSignInStart : (emailAndPassword) => dispatch(emailSignInStart(emailAndPassword)) 
 });
 
 export default connect(null,mapDispatchToProps)(SignIn);

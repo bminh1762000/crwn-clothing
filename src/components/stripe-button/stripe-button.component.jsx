@@ -12,6 +12,7 @@ const StripeCheckoutButton = ({price}) => {
 
     return (
         <StripeCheckout
+            stripeKey={publishableKey}
             label='Pay Now'
             name='CRWN Clothing Ltd.'
             billingAddress
