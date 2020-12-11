@@ -15,30 +15,23 @@ import {signOutStart} from '../../redux/user/user.actions';
 
 const Header = ({ currentUser, hidden, signOutStart }) => (
     <HeaderContainer>
-      <LogoContainer to='/'>
-        <Logo className='logo' />
-      </LogoContainer>
-      <OptionsContainer>
-        <OptionLink to='/shop'>
-          SHOP
-        </OptionLink>
-        <OptionLink to='/contact'>
-          CONTACT
-        </OptionLink>
-        {currentUser ? (
-          <OptionLink as='div' onClick={signOutStart}>
-            SIGN OUT
-          </OptionLink>
-        ) : (
-          <OptionLink to='/signin'>
-            SIGN IN
-          </OptionLink>
-        )}
-        <CartIcon />
-      </OptionsContainer>
-      {hidden ? null : <CartDropdown />}
+        <LogoContainer to="/crwn-clothing">
+            <Logo className="logo" />
+        </LogoContainer>
+        <OptionsContainer>
+            <OptionLink to="/crwn-clothing/shop">SHOP</OptionLink>
+            <OptionLink to="/crwn-clothing/contact">CONTACT</OptionLink>
+            {currentUser ? (
+                <OptionLink as="div" onClick={signOutStart}>
+                    SIGN OUT
+                </OptionLink>
+            ) : (
+                <OptionLink to="/crwn-clothing/signin">SIGN IN</OptionLink>
+            )}
+            <CartIcon />
+        </OptionsContainer>
+        {hidden ? null : <CartDropdown />}
     </HeaderContainer>
-
 );
 
 const mapStateToProps = createStructuredSelector({
