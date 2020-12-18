@@ -15,11 +15,11 @@ var config = {
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if (!userAuth) return;
-  
+
     const userRef = firestore.doc(`users/${userAuth.uid}`);
-  
+
     const snapShot = await userRef.get();
-  
+
     if (!snapShot.exists) {
       const { displayName, email } = userAuth;
       const createdAt = new Date();
@@ -34,11 +34,11 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         console.log('error creating user', error.message);
       }
     }
-  
+
     return userRef;
 };
 
-export const addCollectionandDocument = async( collectionKey, objectsToAdd ) => {
+export const addCollectionAndDocument = async( collectionKey, objectsToAdd ) => {
   const collectionRef = firestore.collection(collectionKey);
   const batch = firestore.batch();
 
@@ -53,7 +53,7 @@ export const addCollectionandDocument = async( collectionKey, objectsToAdd ) => 
 export const convertCollectionsSnapshotToMap = (collections) => {
   const transformedCollection = collections.docs.map(doc => {
     const { title, items } = doc.data();
-    
+
     return {
       routeName : encodeURI(title.toLowerCase()),
       id : doc.id,
@@ -89,4 +89,4 @@ googleProvider.setCustomParameters({ prompt : 'select_account'});
 
 export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
-export default firebase; 
+export default firebase;
