@@ -30,7 +30,7 @@ const App = ({ checkUserSession, currentUser }) => {
             <GlobalStyle />
             <Suspense fallback={<Spinners />}>
                 <Switch>
-                    <Route exact path="/crwn-clothing" component={HomePage} />
+                    <Route exact path="/crwn-clothing/" component={HomePage} />
                     <Route path="/crwn-clothing/shop" component={ShopPage} />
                     <Route
                         path="/crwn-clothing/contact"
