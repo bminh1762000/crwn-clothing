@@ -15,7 +15,7 @@ import {signOutStart} from '../../redux/user/user.actions';
 
 const Header = ({ currentUser, hidden, signOutStart }) => (
     <HeaderContainer>
-        <LogoContainer to="/crwn-clothing">
+        <LogoContainer to="/crwn-clothing/">
             <Logo className="logo" />
         </LogoContainer>
         <OptionsContainer>
