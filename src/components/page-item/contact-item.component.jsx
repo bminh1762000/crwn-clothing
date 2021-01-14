@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import FormInput from "../../components/form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 
-import {ContactFormContainer, MessageContainer, ButtonSubmitContainer} from './page-item.styles';
+import {ContactFormContainer, MessageContainer, ButtonSubmitContainer} from './contact-item.styles';
 
 const Contact = () => {
   const initialValues = {

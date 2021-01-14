@@ -4,15 +4,15 @@ import { withRouter } from 'react-router-dom';
 
 import { MenuItemContainer, BackgroundImage, ContentContainer, Title, Subtitle } from './menu-item.styles'
 
-const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
+const MenuItem = ({ title, imageUrl, size, linkUrl, match, history }) => (
   <MenuItemContainer
     className={`${size}`}
-    onClick={() => history.push(`${match.url}${linkUrl}`)}
+    onClick={() => history.push(`${match.path}${linkUrl}`)}
   >
     <BackgroundImage
-      className='background-image'
+      className="background-image"
       style={{
-        backgroundImage: `url(${imageUrl})`
+        backgroundImage: `url(${imageUrl})`,
       }}
     />
     <ContentContainer>

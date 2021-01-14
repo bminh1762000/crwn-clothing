@@ -9,41 +9,43 @@ import { toggleCartHidden } from "../../redux/cart/cart.actions";
 import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
 
 import {
-    CartDropdownContainer,
-    CartItemsContainer,
-    CartDropdownButton,
-    NotifyContainer,
+  CartDropdownContainer,
+  CartItemsContainer,
+  CartDropdownButton,
+  NotifyContainer,
 } from "./cart-dropdown.styles";
 
-const CartDropdown = ({ cartItems, history, toggleCartHidden, count }) => (
+const CartDropdown = ({ cartItems, history, toggleCartHidden, count }) => {
+  return (
     <CartDropdownContainer>
-        <CartItemsContainer>
-            {count ? (
-                cartItems.map((item) => <CartItem key={item.id} item={item} />)
-            ) : (
-                <NotifyContainer>Cart is empty</NotifyContainer>
-            )}
-        </CartItemsContainer>
-        <CartDropdownButton
-            onClick={() => {
-                history.push("/crwn-clothing/checkout");
-                toggleCartHidden();
-            }}
-        >
-            GO TO CHECKOUT
-        </CartDropdownButton>
+      <CartItemsContainer>
+        {count ? (
+          cartItems.map((item) => <CartItem key={item._id} item={item} />)
+        ) : (
+          <NotifyContainer>Cart is empty</NotifyContainer>
+        )}
+      </CartItemsContainer>
+      <CartDropdownButton
+        onClick={() => {
+          history.push("/crwn-clothing/checkout");
+          toggleCartHidden();
+        }}
+      >
+        GO TO CHECKOUT
+      </CartDropdownButton>
     </CartDropdownContainer>
-);
+  );
+};
 
 const mapStateToProps = createStructuredSelector({
-    cartItems: selectorCartItems,
-    count: selectCartItemsCount,
+  cartItems: selectorCartItems,
+  count: selectCartItemsCount,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    toggleCartHidden: () => dispatch(toggleCartHidden()),
+  toggleCartHidden: () => dispatch(toggleCartHidden()),
 });
 
 export default withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(CartDropdown)
+  connect(mapStateToProps, mapDispatchToProps)(CartDropdown)
 );

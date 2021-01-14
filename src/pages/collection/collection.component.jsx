@@ -10,11 +10,11 @@ import { CollectionPageContainer, ItemsContainer } from './collection.styles'
 const CollectionPage = ({collection}) => {
     const { title, items } = collection;
     return (
-        <CollectionPageContainer> 
+        <CollectionPageContainer>
             <h2>{title.toUpperCase()}</h2>
             <ItemsContainer>
                 {items.map(item => (
-                    <CollectionItem key={item.id} item={item} />
+                    <CollectionItem key={item._id} item={item} />
                 ))}
             </ItemsContainer>
         </CollectionPageContainer>
