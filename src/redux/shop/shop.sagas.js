@@ -10,7 +10,7 @@ import ShopActionTypes from "./shop.types";
 export function* fetchCollectionsAsync() {
   let collectionsData;
   try {
-    const resData = yield call(fetch, "http://localhost:8080/shop/collections");
+    const resData = yield call(fetch, "/api/shop/collections");
     const collectionsMap = yield resData.json();
     collectionsData = collectionsMap.collections.reduce(
       (accumulator, collection) => {

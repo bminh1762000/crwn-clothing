@@ -17,7 +17,7 @@ import { fetchCartStart } from "../cart/cart.actions";
 
 export function* signWithEmailPassword({ payload: { email, password } }) {
   try {
-    const response = yield call(fetch, "http://localhost:8080/auth/login", {
+    const response = yield call(fetch, "/api/auth/login", {
       headers: {
         "Content-Type": "application/json",
       },
@@ -49,7 +49,7 @@ export function* signOut() {
 
 export function* signUp({ payload: { email, password, displayName } }) {
   try {
-    const response = yield call(fetch, "http://localhost:8080/auth/signup", {
+    const response = yield call(fetch, "/api/auth/signup", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

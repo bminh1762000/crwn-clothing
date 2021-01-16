@@ -47,5 +47,6 @@
   "homepage": "https://bminh1762000.github.io/crwn-clothing",
   "devDependencies": {
     "gh-pages": "^3.1.0"
-  }
+  },
+  "proxy" :"http://localhost:8080"
 }

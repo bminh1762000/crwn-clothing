@@ -17,7 +17,7 @@ import {
 
 export function* fetchCartAsync({ payload }) {
   try {
-    const response = yield call(fetch, "http://localhost:8080/shop/cart", {
+    const response = yield call(fetch, "/api/shop/cart", {
       method: "GET",
       headers: {
         Authorization: "Bearer " + payload,
@@ -38,7 +38,7 @@ export function* addToCart({ payload: { _id, token } }) {
   try {
     const response = yield call(
       fetch,
-      `http://localhost:8080/shop/collection/add/${_id}`,
+      `/api/shop/collection/add/${_id}`,
       {
         method: "PUT",
         headers: {
@@ -57,7 +57,7 @@ export function* removeFromCart({ payload: { _id, token } }) {
   try {
     const response = yield call(
       fetch,
-      `http://localhost:8080/shop/collection/remove/${_id}`,
+      `/api/shop/collection/remove/${_id}`,
       {
         method: "PUT",
         headers: {
@@ -76,7 +76,7 @@ export function* clearItemFromCart({ payload: { _id, token } }) {
   try {
     const response = yield call(
       fetch,
-      `http://localhost:8080/shop/collection/${_id}`,
+      `/api/shop/collection/${_id}`,
       {
         method: "DELETE",
         headers: {
