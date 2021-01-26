@@ -49,6 +49,7 @@ const App = ({ currentUser, checkUserSession }) => {
               )
             }
           />
+          <Route component={HomePage} />
         </Switch>
       </Suspense>
     </div>

@@ -52,6 +52,10 @@ export const checkUserSessionFailure = () => ({
   type: UserActionTypes.CHECK_USER_SESSION_FAILURE,
 });
 
-export const checkUserSessionStart= () => ({
+export const checkUserSessionStart = () => ({
   type: UserActionTypes.CHECK_USER_SESSION_START,
+});
+
+export const setError = () => ({
+  type: UserActionTypes.SET_ERROR,
 });

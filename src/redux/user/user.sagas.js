@@ -63,6 +63,7 @@ export function* signUp({ payload: { email, password, displayName } }) {
     const userData = yield response.json();
     yield put(signUpSuccess({ email: userData.email, password }));
   } catch (error) {
+    console.log(error.message);
     yield put(signUpFailure(error));
   }
 }

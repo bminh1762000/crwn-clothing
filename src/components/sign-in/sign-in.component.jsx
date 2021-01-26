@@ -3,29 +3,62 @@ import { connect } from "react-redux";
 
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
-
-import { emailSignInStart } from "../../redux/user/user.actions";
-
 import { SignInContainer, ButtonsContainer } from "./sign-in.styles";
+
+import { required, isEmail, length } from "../../util/validators.js";
+import { emailSignInStart } from "../../redux/user/user.actions";
 
 const SignIn = ({ emailSignInStart }) => {
   const initialValues = {
-    email: "",
-    password: "",
+    logInForm: {
+      email: {
+        value: "",
+        valid: true,
+        validators: [required, isEmail],
+      },
+      password: {
+        value: "",
+        valid: true,
+        validators: [required, length({ min: 8 })],
+      },
+    },
+    formValid: false,
   };
 
   const [values, setValues] = useState(initialValues);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { email, password } = values;
-    emailSignInStart({ email, password });
+    const {
+      logInForm: { email, password },
+      formValid,
+    } = values;
+    if (!formValid) {
+      alert("Form don't valid. Please enter valid form.");
+      return;
+    }
+    emailSignInStart({ email: email.value, password: password.value });
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
-    setValues({ ...values, [name]: value });
+    let isValid = true;
+    for (const validator of values.logInForm[name].validators) {
+      isValid = isValid && validator(value);
+    }
+    const updatedForm = {
+      ...values.logInForm,
+      [name]: {
+        ...values.logInForm[name],
+        value: value,
+        valid: isValid,
+      },
+    };
+    let isValidForm = true;
+    for (const inputName in values.logInForm) {
+      isValidForm = isValidForm && values.logInForm[inputName].valid;
+    }
+    setValues({ logInForm: updatedForm, formValid: isValidForm });
   };
 
   return (
@@ -37,18 +70,18 @@ const SignIn = ({ emailSignInStart }) => {
         <FormInput
           name="email"
           type="email"
-          value={values.email}
+          value={values.logInForm.email.value}
           handleChange={handleChange}
           label="email"
-          required
+          isValid={values.logInForm.email.valid}
         />
         <FormInput
           name="password"
           type="password"
-          value={values.password}
+          value={values.logInForm.password.value}
           handleChange={handleChange}
           label="password"
-          required
+          isValid={values.logInForm.password.valid}
         />
         <ButtonsContainer>
           <CustomButton type="submit"> Sign in </CustomButton>

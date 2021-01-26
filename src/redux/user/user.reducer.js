@@ -36,14 +36,19 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         isAuth: true,
         userId: action.payload.userId,
-        token : action.payload.token
+        token: action.payload.token,
       };
     case UserActionTypes.CHECK_USER_SESSION_FAILURE:
       return {
         ...state,
         isAuth: false,
         userId: null,
-        token: null
+        token: null,
+      };
+    case UserActionTypes.SET_ERROR:
+      return {
+        ...state,
+        error: null,
       };
     default:
       return state;

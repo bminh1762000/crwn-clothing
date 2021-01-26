@@ -6,9 +6,8 @@ import { fetchDirFailure, fetchDirSuccess } from "./directory.actions";
 
 export function* fetchDirectoryAsync() {
   try {
-    const response = yield call(fetch,"/api/preview/directory");
+    const response = yield call(fetch, "/api/preview/directory");
     const dirData = yield response.json();
-    console.log(dirData.directory);
     yield put(fetchDirSuccess(dirData.directory));
   } catch (error) {
     yield put(fetchDirFailure(error.message));
