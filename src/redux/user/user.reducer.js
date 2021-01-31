@@ -29,7 +29,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         isAuth: false,
         userId: null,
-        error: null,
+        token: null,
       };
     case UserActionTypes.CHECK_USER_SESSION_SUCCESS:
       return {

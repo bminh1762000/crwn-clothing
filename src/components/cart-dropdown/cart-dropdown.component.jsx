@@ -27,7 +27,7 @@ const CartDropdown = ({ cartItems, history, toggleCartHidden, count }) => {
       </CartItemsContainer>
       <CartDropdownButton
         onClick={() => {
-          history.push("/crwn-clothing/checkout");
+          history.push("/checkout");
           toggleCartHidden();
         }}
       >
