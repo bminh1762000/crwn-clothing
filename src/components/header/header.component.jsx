@@ -21,18 +21,18 @@ import { signOutStart } from "../../redux/user/user.actions";
 const Header = ({ currentUser, hidden, signOutStart }) => {
   return (
     <HeaderContainer>
-      <LogoContainer to="/crwn-clothing/">
+      <LogoContainer to="/">
         <Logo className="logo" />
       </LogoContainer>
       <OptionsContainer>
-        <OptionLink to="/crwn-clothing/shop">SHOP</OptionLink>
-        <OptionLink to="/crwn-clothing/contact">CONTACT</OptionLink>
+        <OptionLink to="/shop">SHOP</OptionLink>
+        <OptionLink to="/contact">CONTACT</OptionLink>
         {currentUser ? (
           <OptionLink as="div" onClick={signOutStart}>
             SIGN OUT
           </OptionLink>
         ) : (
-          <OptionLink to="/crwn-clothing/signin">SIGN IN</OptionLink>
+          <OptionLink to="/signin">SIGN IN</OptionLink>
         )}
         <CartIcon />
       </OptionsContainer>

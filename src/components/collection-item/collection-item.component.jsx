@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import {createStructuredSelector} from 'reselect'
+import { createStructuredSelector } from "reselect";
+import { withRouter } from "react-router-dom";
 
 import { addItemStart } from "../../redux/cart/cart.actions";
 import { selectTokenId } from "../../redux/user/user.selectors";
@@ -14,7 +15,7 @@ import {
   AddButton,
 } from "./collection-item.styles";
 
-const CollectionItem = ({ item, addItem, token }) => {
+const CollectionItem = ({ item, addItem, token, history }) => {
   const { name, price, imageUrl, _id } = item;
 
   return (
@@ -24,7 +25,15 @@ const CollectionItem = ({ item, addItem, token }) => {
         <NameContainer>{name}</NameContainer>
         <PriceContainer>{price}$</PriceContainer>
       </CollectionFooterContainer>
-      <AddButton onClick={() => addItem({ _id, token })}>Add to cart</AddButton>
+      <AddButton
+        onClick={() =>
+          token
+            ? addItem({ _id, token })
+            : history.push("/signin")
+        }
+      >
+        Add to cart
+      </AddButton>
     </CollectionItemContainer>
   );
 };
@@ -37,4 +46,7 @@ const mapDispatchToProps = (dispatch) => ({
   addItem: (item) => dispatch(addItemStart(item)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CollectionItem);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(CollectionItem));

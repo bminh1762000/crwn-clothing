@@ -30,20 +30,20 @@ const App = ({ currentUser, checkUserSession }) => {
       <GlobalStyle />
       <Suspense fallback={<Spinners />}>
         <Switch>
-          <Route exact path="/crwn-clothing/" component={HomePage} />
-          <Route path="/crwn-clothing/shop" component={ShopPage} />
-          <Route path="/crwn-clothing/contact" component={ContactPage} />
+          <Route exact path="/" component={HomePage} />
+          <Route path="/shop" component={ShopPage} />
+          <Route path="/contact" component={ContactPage} />
           <Route
             exact
-            path="/crwn-clothing/checkout"
+            path="/checkout"
             component={CheckoutPage}
           />
           <Route
             exact
-            path="/crwn-clothing/signin"
+            path="/signin"
             render={() =>
               currentUser ? (
-                <Redirect to="/crwn-clothing" />
+                <Redirect to="/" />
               ) : (
                 <SignInAndSignUpPage />
               )
